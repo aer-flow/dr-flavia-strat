@@ -24,6 +24,15 @@ function normalizeHref(value, fallback = '#') {
   return rawValue || fallback;
 }
 
+function normalizeEmail(value) {
+  const rawValue = String(value || '').trim();
+  if (!rawValue || rawValue.toLowerCase() === 'contact@example.com') {
+    return '';
+  }
+
+  return rawValue;
+}
+
 function normalizePhoneHref(value) {
   const rawValue = String(value || '').trim();
   if (!rawValue) {
@@ -43,7 +52,7 @@ const city = normalizeText(siteData.city, 'Bucuresti');
 const phoneDisplay = normalizeText(siteData.phone_display, '+40 700 000 000');
 const phoneLink = normalizePhoneHref(siteData.phone_link || phoneDisplay);
 const whatsappNumber = normalizeWhatsAppNumber(siteData.whatsapp_number || phoneLink);
-const email = normalizeText(siteData.email, 'contact@example.com');
+const email = normalizeEmail(siteData.email);
 const address = normalizeText(siteData.address, 'Strada Zambetului Nr. 1, Bucuresti');
 const mapQuery = encodeURIComponent(address);
 const siteUrl = normalizeText(siteData.site_url, 'https://example.com/');

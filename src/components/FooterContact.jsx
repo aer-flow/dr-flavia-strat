@@ -89,12 +89,14 @@ export default function FooterContact() {
                   <span className="text-sm font-medium">{contact.phone}</span>
                 </a>
 
-                <a href={`mailto:${contact.email}`} className="group flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 transition-colors group-hover:bg-[#D4AF37]">
-                    <Mail size={18} className="text-[#D4AF37] group-hover:text-white" />
-                  </div>
-                  <span className="text-sm font-medium">{contact.email}</span>
-                </a>
+                {contact.email ? (
+                  <a href={`mailto:${contact.email}`} className="group flex items-center gap-4">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 transition-colors group-hover:bg-[#D4AF37]">
+                      <Mail size={18} className="text-[#D4AF37] group-hover:text-white" />
+                    </div>
+                    <span className="text-sm font-medium">{contact.email}</span>
+                  </a>
+                ) : null}
               </div>
             </div>
 
